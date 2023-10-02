@@ -1,0 +1,25 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* One column for textboxes and buttons */
+    grid-template-rows: auto auto;
+    /* Two rows for textboxes and buttons */
+    grid-row-gap: 10px;
+    /* Add vertical spacing between rows */
+}
+
+.input-row {
+    display: flex;
+    align-items: center;
+}
+
+.button-row {
+    display: flex;
+    justify-content: center;
+    /* Center buttons horizontally */
+}
+
+.position-input {
+    padding-left: 10px;
+    width: 28px;
+}

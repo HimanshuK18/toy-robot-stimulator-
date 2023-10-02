@@ -34,39 +34,66 @@ const RobotPostion: React.FC = () => {
   };
 
   return (<>
-        <div className="container">
-            <div className="column">
-            <form onSubmit={handleSetRobotPosition}>
-                <label htmlFor="xInput">X:</label>
-                <input
-                    data-testid="xInput-input"
-                    type="number"
-                    id="xInput"
-                    aria-label="Enter your X coordinate"
-                    min={0}
-                    required
-                    max={BOARD_DIMENSION.x - 1}
-                    value={robotX === -1 ? '' : robotX}
-                    onChange={(e) => { setRobotX(parseInt(e.target.value)); }}
-                />
-                <label htmlFor="yInput">Y:</label>
-                <input
-                    data-testid="yInput-input"
-                    type="number"
-                    aria-label="Enter your Y coordinate"
-                    id="yInput"
-                    required
-                    min={0}
-                    max={BOARD_DIMENSION.y - 1}
-                    value={robotY === -1 ? '' : robotY}
-                    onChange={(e) => { setRobotY(parseInt(e.target.value)); }}
-                />
-                <button aria-label="Set Robot Position" data-testid="Button-Position" type="submit" className='button-movement'>Set Robot Position</button>
-                </form>
-                <button aria-label="Reset Position" data-testid="Button-Reset" onClick={handleReSetRobotPosition} className='button-movement'>Reset Position</button>
-            </div>
+    <div className="container-position">
+      <div className="column-position">
+        <form onSubmit={handleSetRobotPosition} className="grid-container">
+          <div className="input-row">
+            <label htmlFor="xInput" style={{ marginRight: '5px' }}>X Value:</label>
+            <input
+             className='position-input'
+              data-testid="xInput-input"
+              type="number"
+              id="xInput"
+              aria-label="Enter your X coordinate"
+              min={0}
+              required
+              max={BOARD_DIMENSION.x - 1}
+              value={robotX === -1 ? '' : robotX}
+              onChange={(e) => {
+                setRobotX(parseInt(e.target.value));
+              }}
+            />
+            <label htmlFor="yInput" style={{ marginRight: '5px', marginLeft: '10px' }}>Y Value:</label>
+            <input
+            className='position-input'
+              data-testid="yInput-input"
+              type="number"
+              aria-label="Enter your Y coordinate"
+              id="yInput"
+              required
+              min={0}
+              max={BOARD_DIMENSION.y - 1}
+              value={robotY === -1 ? '' : robotY}
+              onChange={(e) => {
+                setRobotY(parseInt(e.target.value));
+              }}
+            />
+          </div>
+          <div className="button-row">
+            <button
+              aria-label="Set Robot Position"
+              data-testid="Button-Position"
+              type="submit"
+              className="button-default"
+            >
+              Set Robot Position
+            </button>
+          </div>
+        </form>
+        <div className="button-row">
+          <button
+            aria-label="Reset Position"
+            data-testid="Button-Reset"
+            onClick={handleReSetRobotPosition}
+            className="button-default"
+          >
+            Reset Position
+          </button>
         </div>
-    </>);
+      </div>
+    </div>
+
+  </>);
 };
 
 export default RobotPostion;

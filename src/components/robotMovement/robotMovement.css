@@ -1,0 +1,31 @@
+
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    grid-gap: 5px; 
+  
+   
+    @media screen and (max-width: 600px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .button-default {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: #3498db;
+    color: #fff;
+    margin: 10px;
+  }
+  
+  .button-default:hover,
+  .button-default:focus {
+    background-color: #2980b9;
+  }
+  

@@ -16,7 +16,7 @@ const Board: React.FC = () => {
         const cellColor = (i + j) % 2 === 0 ? 'maroon' : 'gary';
         cells.push(
                     <div key={j} className={`cell ${cellColor}`}>
-                        {currentPosition.XPosition === i && currentPosition.YPosition === j &&
+                      {i},{ j } {currentPosition.XPosition === i && currentPosition.YPosition === j &&
                         <img data-testid="robot" className="icon" src={process.env.PUBLIC_URL + '/icons/icons-robot.png'} alt="Robot" />}
                     </div>
         );
@@ -41,8 +41,8 @@ const Board: React.FC = () => {
       <div className="column">
         <label htmlFor="Robot Status" className="status-label" data-testid="status-robot">Status: </label>
         <span className="status-text">
-          X: <span className="status-text-value">{currentPosition.XPosition === -1 ? '' : currentPosition.XPosition}</span>,
-          Y: <span className="status-text-value">{currentPosition.YPosition === -1 ? '' : currentPosition.YPosition}</span>
+          X:<span data-testid="status-x" className="status-text-value">{currentPosition.XPosition === -1 ? '' : currentPosition.XPosition}</span>,
+          Y:<span data-testid="status-y" className="status-text-value">{currentPosition.YPosition === -1 ? '' : currentPosition.YPosition}</span>
         </span>
 
         <RobotMovement></RobotMovement>

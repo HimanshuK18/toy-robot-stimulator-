@@ -13,8 +13,8 @@ describe('RobotPosition Component', () => {
     jest.spyOn(React, 'useContext').mockReturnValue(mockContextValue);
 
     const { getByLabelText, getByText } = render(<RobotPosition />);
-    const xInput = getByLabelText('X:');
-    const yInput = getByLabelText('Y:');
+    const xInput = getByLabelText('X Value:');
+    const yInput = getByLabelText('Y Value:');
     const setUserPositionButton = getByText('Set Robot Position');
     const resetPositionButton = getByText('Reset Position');
 
@@ -50,11 +50,9 @@ describe('RobotPosition Component', () => {
     const resetPositionButton = getByTestId('Button-Reset');
 
     fireEvent.click(setUserPositionButton);
-    
     expect(mockDispatch).toHaveBeenCalled();
 
     fireEvent.click(resetPositionButton);
-
     expect(mockDispatch).toHaveBeenCalled();
 
   });

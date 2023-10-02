@@ -24,9 +24,9 @@ describe('Board Component', () => {
     };
     jest.spyOn(React, 'useContext').mockReturnValue(mockContextValue);
     render(<Board />);
-    const statusLabels = screen.getByTestId("status-robot");
-    const xStatusValue = screen.getByText('X:');
-    const yStatusValue = screen.getByText('Y:');
+    const statusLabels = screen.getByTestId('status-robot');
+    const xStatusValue = screen.getByTestId('status-x');
+    const yStatusValue = screen.getByTestId('status-y');
     
     expect(statusLabels).toBeTruthy();
     expect(xStatusValue).toBeTruthy();
@@ -39,6 +39,20 @@ describe('Board Component', () => {
       dispatch: jest.fn(),
     };
     const { getByText } = render(
+      <RobotContext.Provider value={mockContextValue}>
+        <Board />
+      </RobotContext.Provider>
+    );
+    const robotIcon = screen.getByTestId('robot');
+    expect(robotIcon).toBeTruthy();
+  });
+
+  it('should display the robot icon', () => {
+    const mockContextValue = {
+      currentPosition: { XPosition: 1, YPosition: 1 },
+      dispatch: jest.fn(),
+    };
+    render(
       <RobotContext.Provider value={mockContextValue}>
         <Board />
       </RobotContext.Provider>

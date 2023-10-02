@@ -77,17 +77,17 @@ const RobotMovement: React.FC = () => {
     dispatch(savePosition);
   };
 
-  return (
+  return (<>
     <div>
       <h3>Move the Robot</h3>
       <div className="button-container">
-        <button aria-label="Move Up" className="button-movement" onClick={() => { handleRobotButton(Direction.Up, currentPosition); }}>Up</button>
-        <button aria-label="Move Down" className="button-movement" onClick={() => { handleRobotButton(Direction.Down, currentPosition); }}>Down</button>
-        <button aria-label="Move Left" className="button-movement" onClick={() => { handleRobotButton(Direction.Left, currentPosition); }}>Left</button>
-        <button aria-label="Move Right" className="button-movement" onClick={() => { handleRobotButton(Direction.Right, currentPosition); }}>Right</button>
+        <button aria-label="Move Up" className="button-default" onClick={() => { handleRobotButton(Direction.Up, currentPosition); }}>Up</button>
+        <button aria-label="Move Down" className="button-default" onClick={() => { handleRobotButton(Direction.Down, currentPosition); }}>Down</button>
+        <button aria-label="Move Left" className="button-default" onClick={() => { handleRobotButton(Direction.Left, currentPosition); }}>Left</button>
+        <button aria-label="Move Right" className="button-default" onClick={() => { handleRobotButton(Direction.Right, currentPosition); }}>Right</button>
       </div>
     </div>
-  );
+  </>);
 }
 
 export default RobotMovement;
