@@ -4,33 +4,31 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 It is a React SPA of a toy robot simulation moving on a square tabletop, the robot can move in a 5x5 grid and there are no obstructions.
 
 ## Available Scripts
-Run this command to intall all the dependencies
+Download the repo and run this command to intall all the dependencies, on the path where file package.json is located
 
 ### `npm install`
 
-Run this command to build the applivation
+Run this command to build the application
 
-### `npm build`
+### `npm run build`
 
 After the build is sucessful run this command for running the app in production
 
 ### `serve -s build`
-
-
-Then we can, run to start the application:
-
-### `npm start`
-
-Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+
+If needed, run to start the application in devlopment mode:
+
+### `npm run start`
 
 The page will reload if you make edits.\
 
 Run this command to run the test cases.
 
-### `npm test`
+### `npm run jest`
 
-How it works
+How this application works works
 • The robot is free to roam around the board via clicking the of Up, Down, Left and Right buttons or using 
  the keyboard arrow keys.
 • A status bar should also frequently update to show the current position of the Robot.
