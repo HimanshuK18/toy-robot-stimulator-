@@ -39,4 +39,7 @@ How it works
   button to confirm.
 
 The Image below shows the X,Y postion for reference.
+
+
+
 <img width="265" alt="board" src="https://github.com/HimanshuK18/toy-robot-stimulator-/assets/12135604/0ec648dc-1555-4d92-b07b-1041a9b83ca9">
