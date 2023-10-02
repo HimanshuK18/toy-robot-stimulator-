@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Board from './components/robotboard/board';
+import Board from './components/robotBoard/board';
 
 const App: React.FC = () => {
   return (<>

@@ -1,51 +1,72 @@
-import React from 'react';
-import { render, act } from '@testing-library/react';
-import { RobotPositionProvider, RobotContext } from './robotState';
-describe('RobotPositionProvider', () => {
-  it('should render the provider and provide the initial state', () => {
-    let component;
-    act(() => {
-      component = render(
-        <RobotPositionProvider>
-          <RobotContext.Consumer>
-            {({ currentPosition }) => (
-              <div data-testid="position">{currentPosition.XPosition}, {currentPosition.YPosition}</div>
-            )}
-          </RobotContext.Consumer>
-        </RobotPositionProvider>
-      );
-    });
+import React, { useContext } from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 
-    const positionElement = component.getByTestId('position');
-    expect(positionElement.textContent).toBe('-1, -1');
+import { RobotPositionProvider, RobotContext, Action } from './robotState';
+
+// Mock a component that consumes the context
+const MockConsumer = () => {
+  const { currentPosition, dispatch } = useContext(RobotContext);
+
+  const handleSave = () => {
+    const newPosition = { XPosition: 10, YPosition: 20 };
+    dispatch({ type: 'save', newPostion: newPosition });
+  };
+
+  const handleReset = () => {
+    dispatch({ type: 'reset' });
+  };
+
+  return (
+    <div>
+      <p>X Position: {currentPosition.XPosition}</p>
+      <p>Y Position: {currentPosition.YPosition}</p>
+      <button onClick={handleSave}>Save Position</button>
+      <button onClick={handleReset}>Reset Position</button>
+    </div>
+  );
+};
+
+describe('RobotContext', () => {
+  it('provides the initial state', () => {
+    render(
+      <RobotPositionProvider>
+        <MockConsumer />
+      </RobotPositionProvider>
+    );
+
+    expect(screen.getByText('X Position: -1')).toBeInTheDocument();
+    expect(screen.getByText('Y Position: -1')).toBeInTheDocument();
   });
 
-  it('should update the context when dispatch is called', () => {
-    let component;
-    act(() => {
-      component = render(
-        <RobotPositionProvider>
-          <RobotContext.Consumer>
-            {({ currentPosition, dispatch }) => (
-              <div>
-                <div data-testid="position">{currentPosition.XPosition}, {currentPosition.YPosition}</div>
-                <button data-testid="dispatch-button" onClick={() => dispatch({ type: 'save', newPostion: { XPosition: 1, YPosition: 2 } })}>Update</button>
-              </div>
-            )}
-          </RobotContext.Consumer>
-        </RobotPositionProvider>
-      );
-    });
+  it('updates the state correctly on "save" action', () => {
+    render(
+      <RobotPositionProvider>
+        <MockConsumer />
+      </RobotPositionProvider>
+    );
 
-    const positionElement = component.getByTestId('position');
-    const dispatchButton = component.getByTestId('dispatch-button');
+    const saveButton = screen.getByText('Save Position');
+    fireEvent.click(saveButton);
 
-    expect(positionElement.textContent).toBe('-1, -1');
+    expect(screen.getByText('X Position: 10')).toBeInTheDocument();
+    expect(screen.getByText('Y Position: 20')).toBeInTheDocument();
+  });
 
-    act(() => {
-      dispatchButton.click();
-    });
+  it('resets the state correctly on "reset" action', () => {
+    render(
+      <RobotPositionProvider>
+        <MockConsumer />
+      </RobotPositionProvider>
+    );
 
-    expect(positionElement.textContent).toBe('1, 2');
+    const saveButton = screen.getByText('Save Position');
+    fireEvent.click(saveButton);
+
+    const resetButton = screen.getByText('Reset Position');
+    fireEvent.click(resetButton);
+
+    expect(screen.getByText('X Position: -1')).toBeInTheDocument();
+    expect(screen.getByText('Y Position: -1')).toBeInTheDocument();
   });
 });

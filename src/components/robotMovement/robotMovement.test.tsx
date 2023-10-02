@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import RobotMovement from './RobotMovement';
+import RobotMovement from './robotMovement';
 import { RobotContext } from '../../state/robotState';
 
 
