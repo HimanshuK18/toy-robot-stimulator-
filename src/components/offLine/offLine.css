@@ -1,0 +1,11 @@
+.offline-container {
+    position: fixed; /* or 'absolute' depending on your specific needs */
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Width spanning the entire viewport */
+    background-color: #f0f0f0; /* Adjust the background color as needed */
+    padding: 10px; /* Add padding for content inside the div */
+    text-align: center; /* Center the content horizontally */
+}
+
+  

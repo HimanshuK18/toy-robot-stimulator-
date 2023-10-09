@@ -4,7 +4,6 @@ import '@testing-library/jest-dom/extend-expect';
 
 import { RobotPositionProvider, RobotContext, Action } from './robotState';
 
-// Mock a component that consumes the context
 const MockConsumer = () => {
   const { currentPosition, dispatch } = useContext(RobotContext);
 
